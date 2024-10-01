@@ -18,5 +18,11 @@
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
+        <!-- CodeGuru Profiler dependency -->
+        <dependency>
+            <groupId>software.amazon.codeguruprofiler</groupId>
+            <artifactId>codeguru-profiler-agent</artifactId>
+            <version>1.2.0</version>
+        </dependency>
     </dependencies>
 </project>
