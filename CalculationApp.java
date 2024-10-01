@@ -1,5 +1,7 @@
 package com.example;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class CalculationApp {
@@ -19,14 +21,22 @@ public class CalculationApp {
         boolean isPrime = app.isPrime(num);
         logger.info(num + " is a prime number: " + isPrime);
 
+        // Generating a list of prime numbers (inefficient)
+        logger.info("Generating prime numbers up to 100...");
+        List<Integer> primes = app.generatePrimes(100);
+        logger.info("Generated primes: " + primes);
+
         // Intentional infinite loop to showcase profiling
         logger.info("Starting infinite loop (press Ctrl+C to stop)...");
         app.infiniteLoop();
     }
 
-    // Inefficient method to calculate factorial
+    // Inefficient method to calculate factorial using recursion
     public long calculateFactorial(int n) {
-        if (n <= 1) {
+        if (n < 0) {
+            throw new IllegalArgumentException("Negative input: " + n);
+        }
+        if (n == 0 || n == 1) {
             return 1;
         } else {
             return n * calculateFactorial(n - 1); // Recursive method can be inefficient for larger numbers
@@ -36,12 +46,23 @@ public class CalculationApp {
     // Inefficient method to check for prime numbers
     public boolean isPrime(int num) {
         if (num <= 1) return false;
-        for (int i = 2; i < num / 2; i++) {
+        for (int i = 2; i <= Math.sqrt(num); i++) { // Improved but still inefficient
             if (num % i == 0) {
                 return false;
             }
         }
         return true;
+    }
+
+    // Inefficient method to generate a list of prime numbers
+    public List<Integer> generatePrimes(int limit) {
+        List<Integer> primes = new ArrayList<>();
+        for (int num = 2; num <= limit; num++) {
+            if (isPrime(num)) {
+                primes.add(num);
+            }
+        }
+        return primes; // Could be optimized with better algorithms
     }
 
     // Intentional infinite loop to test profiling
