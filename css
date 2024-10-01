@@ -1,0 +1,12 @@
+calculation-app/
+│
+├── src
+│   └── main
+│       ├── java
+│       │   └── com
+│       │       └── example
+│       │           └── CalculationApp.java
+│       └── resources
+│           └── log4j.properties
+├── pom.xml
+└── README.md
